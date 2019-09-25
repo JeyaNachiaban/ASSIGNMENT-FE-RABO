@@ -1,0 +1,41 @@
+<div align="Center">
+	<H3>RABO BANK</H3>
+</div>
+<div align="Left">
+	Please choose csv file to view the issue Counts
+	<input type="file" #csvReader name="Upload CSV" id="txtFileUpload" (change)="uploadListener($event)" accept=".csv" /> 
+</div>
+
+<div>
+	<div align="Center">
+		<b>Issue Counts</b>
+	</div>
+	<div align="Right">
+		<input type="text" (keyup)='search($event.target.value)' placeholder="Type issue count to filter">
+	</div>
+</div>
+
+<div class="minimalistBlack" *ngIf="records.length <= 0" >
+	Zero Issue Found
+</div>
+
+<div>
+	<table class="minimalistBlack" *ngIf="records.length > 0" >    
+	  <thead>    
+		<tr>    
+		  <th>First Name </th>    
+		  <th>Sur Name </th>    
+		  <th>Issue Count </th>    
+		  <th>DOB </th>    
+		</tr>    
+	  </thead>    
+	  <tbody>    
+		<tr *ngFor="let record of records;let i = index;">    
+		  <td> <span>{{record.firstName}}</span> </td>    
+		  <td> <span>{{record.surName}}</span> </td>    
+		  <td> <span>{{record.issueCount}}</span> </td>    
+		  <td> <span>{{record.dob}}</span> </td>       
+		</tr>    
+	  </tbody>    
+	</table>
+</div>
